@@ -93,6 +93,10 @@ class FirestoreUserEventDataSource @Inject constructor(
         }
     }
 
+    /**
+     * FirestoreのcallbackをchannelFlowでFlowに変換する.
+     * 今ならcoroutines-play-servicesあるからそれ使えば良いけど。
+     */
     override fun getObservableUserEvent(userId: String, eventId: SessionId): Flow<UserEventResult> {
         return if (userId.isEmpty()) {
             flow {
