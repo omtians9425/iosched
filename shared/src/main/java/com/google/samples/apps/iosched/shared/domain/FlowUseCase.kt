@@ -30,6 +30,7 @@ import kotlinx.coroutines.flow.flowOn
  */
 abstract class FlowUseCase<in P, R>(private val coroutineDispatcher: CoroutineDispatcher) {
 
+    // Template method
     @ExperimentalCoroutinesApi
     operator fun invoke(parameters: P): Flow<Result<R>> {
         return execute(parameters)
