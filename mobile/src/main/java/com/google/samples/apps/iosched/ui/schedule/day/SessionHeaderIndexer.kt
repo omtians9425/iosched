@@ -31,5 +31,5 @@ fun indexSessionHeaders(sessions: List<Session>, zoneId: ZoneId): List<Pair<Int,
         .mapIndexed { index, session ->
             index to TimeUtils.zonedTime(session.startTime, zoneId)
         }
-        .distinctBy { it.second.hour to it.second.minute }
+        .distinctBy { it.second.hour to it.second.minute } // remove duplication of hour&minute
 }
