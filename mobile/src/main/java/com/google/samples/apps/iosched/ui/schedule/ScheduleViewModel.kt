@@ -133,7 +133,7 @@ class ScheduleViewModel @Inject constructor(
             MediatorLiveData<SessionTimeData>()
         }.apply {
             // Session data observes the time zone and the repository.
-            forEachIndexed { _, sessionTimeDataDay ->
+            forEach { sessionTimeDataDay ->
                 sessionTimeDataDay.addSource(timeZoneId) {
                     sessionTimeDataDay.value = sessionTimeDataDay.value?.apply {
                         timeZoneId = it
@@ -238,6 +238,7 @@ class ScheduleViewModel @Inject constructor(
 
             launch {
                 // Load filters and user sessions when there's new conference data
+                // [RefreshConferenceDataUseCase]契機
                 observeConferenceDataUseCase(Any()).collect {
                     Timber.d("Detected new data in conference data repository")
                     loadEventFilters()

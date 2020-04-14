@@ -117,6 +117,7 @@ class UserSessionMatcher {
         preferenceStorage.selectedFilters = gson.toJson(state)
     }
 
+    // pinしたEventだけ出すかと、id&categoryのリストを取得。どちらもユーザーが選んだもの。
     fun load(preferenceStorage: PreferenceStorage) {
         val prefValue = preferenceStorage.selectedFilters
         if (prefValue != null) {

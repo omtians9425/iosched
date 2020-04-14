@@ -52,7 +52,8 @@ open class LoadEventFiltersUseCase @Inject constructor(
             .flatMap { entry -> entry.value }
             // Convert to TagFilters, checking ones that are currently selected
             .map { TagFilter(it, it in parameters) }
-            .toMutableList<EventFilter>()
+            .toMutableList<EventFilter>() // up cast
+        // 先頭にpinフィルターを追加する
         filters.add(0, MyEventsFilter(parameters.getShowPinnedEventsOnly()))
         return filters
     }
