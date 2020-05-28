@@ -63,7 +63,7 @@ fun BottomNavigationView.setupWithNavController(
             containerId
         )
 
-        // Obtain its id
+        // Obtain its id: そのグラフの頂上のdestination id
         val graphId = navHostFragment.navController.graph.id
 
         if (index == 0) {
@@ -116,7 +116,7 @@ fun BottomNavigationView.setupWithNavController(
                                 R.anim.nav_default_pop_exit_anim
                         )
 
-                        attach(selectedFragment)
+                        attach(selectedFragment) // restore UI including state
                         setPrimaryNavigationFragment(selectedFragment)
 
                         // Detach all other Fragments
@@ -231,7 +231,7 @@ private fun obtainNavHostFragment(
     containerId: Int
 ): NavHostFragment {
     // If the Nav Host fragment exists, return it
-    val existingFragment = fragmentManager.findFragmentByTag(fragmentTag) as NavHostFragment?
+    val existingFragment = fragmentManager.findFragmentByTag(fragmentTag) as? NavHostFragment
     if (existingFragment != null) {
         return existingFragment
     }

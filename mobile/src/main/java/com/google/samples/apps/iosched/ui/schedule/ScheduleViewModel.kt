@@ -372,6 +372,7 @@ class ScheduleViewModel @Inject constructor(
         }
     }
 
+    // こいつとrefreshConferenceDataUseCaseの違い
     private fun refreshUserSessions() {
         Timber.d("ViewModel refreshing user sessions")
 
