@@ -372,7 +372,9 @@ class ScheduleViewModel @Inject constructor(
         }
     }
 
-    // こいつとrefreshConferenceDataUseCaseの違い
+    // refreshConferenceDataUseCaseと異なり、当該ユーザーのセッション情報を更新するだけ(ConferenceDataはローカルキャッシュを読むのみ)
+    // refreshConferenceDataUseCaseはConference情報自体を更新する
+    // streamを[LoadUserSessionsByDayUseCase]に内包せずにViewModelからメソッド呼び出しで駆動している理由は、おそらく駆動経路が多すぎるため。
     private fun refreshUserSessions() {
         Timber.d("ViewModel refreshing user sessions")
 

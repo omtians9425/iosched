@@ -36,6 +36,7 @@ import javax.inject.Singleton
 
 /**
  * Single point of access to user events data associated with a user for the presentation layer.
+ * 生のRepositoryをwrapしてユーザーイベントstreamとmergeする
  */
 @Singleton
 open class DefaultSessionAndUserEventRepository @Inject constructor(
